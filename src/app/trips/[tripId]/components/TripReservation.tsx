@@ -60,6 +60,7 @@ function TripReservation({
         type: "manual",
         message: "Esta data já está reservada.",
       });
+      return;
     }
 
     if (response?.error?.code === "INVALID_START_DATE") {
@@ -67,6 +68,7 @@ function TripReservation({
         type: "manual",
         message: "Esta data já está reservada.",
       });
+      return;
     }
 
     if (response?.error?.code === "INVALID_END_DATE") {
@@ -74,6 +76,7 @@ function TripReservation({
         type: "manual",
         message: "Esta data já está reservada.",
       });
+      return;
     }
   };
 
@@ -133,7 +136,12 @@ function TripReservation({
             value: true,
             message: "Número de hóspedes é obrigatório.",
           },
+          max: {
+            value: maxGuests,
+            message: `Número de hóspedes não pode ser maior que ${maxGuests}`,
+          },
         })}
+        type="number"
         placeholder={`Número de hóspedes (máx: ${maxGuests})`}
         className="mt-4"
         error={!!errors?.guests}
