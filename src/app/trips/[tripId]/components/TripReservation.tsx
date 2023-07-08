@@ -4,12 +4,12 @@ import Button from "@/components/Button";
 import DatePicker from "@/components/DatePicker";
 import Input from "@/components/Input";
 import { formatCurrency } from "@/lib/format-currency";
-import { Trip } from "@prisma/client";
 import { differenceInDays } from "date-fns";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 
 interface TripReservationProps {
+  tripId: string;
   tripStartDate: Date;
   tripEndDate: Date;
   maxGuests: number;
@@ -23,6 +23,7 @@ interface TripsReservationForm {
 }
 
 function TripReservation({
+  tripId,
   tripStartDate,
   tripEndDate,
   maxGuests,
@@ -36,8 +37,17 @@ function TripReservation({
     watch,
   } = useForm<TripsReservationForm>();
 
-  const onSubmit = (data: any) => {
-    console.log({ data });
+  const onSubmit = async (data: TripsReservationForm) => {
+    const response = await fetch("http://localhost:3000/api/trips/check", {
+      body: Buffer.from(
+        JSON.stringify({
+          startDate: data.startDate,
+          endDate: data.endDate,
+          tripId,
+        })
+      ),
+      method: "POST",
+    }).then((res) => res.json());
   };
 
   const startDate = watch("startDate");
