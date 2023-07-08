@@ -9,7 +9,7 @@ interface TripHeaderProps {
 
 function TripHeader({ trip }: TripHeaderProps) {
   return (
-    <>
+    <div className="flex flex-col">
       <div className="relative h-[300px] w-full">
         <Image
           src={trip?.coverImage}
@@ -34,7 +34,7 @@ function TripHeader({ trip }: TripHeaderProps) {
           por dia
         </p>
       </div>
-    </>
+    </div>
   );
 }
 
