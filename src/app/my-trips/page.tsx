@@ -36,17 +36,19 @@ function MyTrips() {
 
   return (
     <div className="container mx-auto p-5">
-      <h1 className="font-semibold text-primaryDarker text-xl">
+      <h1 className="font-semibold text-primaryDarker text-xl lg:mb-5">
         Minhas Viagens
       </h1>
       {reservations && reservations?.length > 0 ? (
-        reservations?.map((reservation) => (
-          <UserReservationItem
-            key={reservation.id}
-            reservation={reservation}
-            onSuccess={fetchReservations}
-          />
-        ))
+        <div className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-14">
+          {reservations?.map((reservation) => (
+            <UserReservationItem
+              key={reservation.id}
+              reservation={reservation}
+              onSuccess={fetchReservations}
+            />
+          ))}
+        </div>
       ) : (
         <div className="flex flex-col">
           <p className="text-primaryDarker font-medium mt-2">
