@@ -34,6 +34,11 @@ function TripConfirmation({ params }: { params: { tripId: string } }) {
           maxGuests: maxGuests,
         }),
       }).then((res) => res.json());
+
+      if (response?.error === "TRIP_ALREADY_RESERVED") {
+        return router.push("/");
+      }
+
       setTrip(response.trip);
       setTotalPrice(response.totalPrice);
     };
@@ -43,6 +48,7 @@ function TripConfirmation({ params }: { params: { tripId: string } }) {
     }
 
     fetchTrip();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
 
   if (!trip) return null;
