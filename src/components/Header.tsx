@@ -6,8 +6,8 @@ import React, { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 
 function Header() {
-  const { status, data } = useSession();
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const { status, data } = useSession();
 
   const handleLoginClick = () => signIn();
 
@@ -48,9 +48,14 @@ function Header() {
             src={data.user.image!}
           />
           {menuIsOpen && (
-            <div className="z-50 absolute top-12 left-0 w-full h-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center ">
+            <div className="z-50 absolute top-12 left-0 w-full h-[100px] bg-white rounded-lg shadow-md flex flex-col justify-center items-center ">
+              <Link href="/my-trips">
+                <button className="text-primary text-sm font-semibold pb-2 border-b border-grayLighter border-solid ">
+                  Minhas viagens
+                </button>
+              </Link>
               <button
-                className="text-primary text-sm font-semibold"
+                className="text-primary text-sm font-semibold pt-2"
                 onClick={handleLogoutClick}
               >
                 Logout
