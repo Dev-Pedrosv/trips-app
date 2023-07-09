@@ -2,10 +2,15 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { TripReservation } from "@prisma/client";
+import { Prisma } from "@prisma/client";
+import UserReservationItem from "./components/UserReservationItem";
 
 function MyTrips() {
-  const [reservations, setReservations] = useState<TripReservation[]>();
+  const [reservations, setReservations] = useState<
+    Prisma.TripReservationGetPayload<{
+      include: { trip: true };
+    }>[]
+  >();
   const { status, data } = useSession();
   const router = useRouter();
 
@@ -27,7 +32,16 @@ function MyTrips() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
 
-  return <div>MyTrips</div>;
+  return (
+    <div className="container mx-auto p-5">
+      <h1 className="font-semibold text-primaryDarker text-xl">
+        Minhas Viagens
+      </h1>
+      {reservations?.map((reservation) => (
+        <UserReservationItem key={reservation.id} reservation={reservation} />
+      ))}
+    </div>
+  );
 }
 
 export default MyTrips;
