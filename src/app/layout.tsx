@@ -25,9 +25,13 @@ export default function RootLayout({
       <body className={poppins.className}>
         <NextAuthProvider>
           <ToastProvider>
-            <Header />
-            {children}
-            <Footer />
+            <div className="flex flex-col h-screen">
+              <div className="h-[94px]">
+                <Header />
+              </div>
+              <div className="flex-1">{children}</div>
+              <Footer />
+            </div>
           </ToastProvider>
         </NextAuthProvider>
       </body>
