@@ -75,7 +75,7 @@ function TripConfirmation({ params }: { params: { tripId: string } }) {
         position: "bottom-center",
       });
     }
-    router.push("/");
+    router.push("/my-trips");
 
     toast.success("Reserva realizada com sucesso!", {
       position: "bottom-center",
