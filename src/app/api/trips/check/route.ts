@@ -1,5 +1,6 @@
+import { formatCurrency } from "@/lib/format-currency";
 import { prisma } from "@/lib/prisma";
-import { isBefore } from "date-fns";
+import { differenceInDays, isBefore } from "date-fns";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -72,6 +73,11 @@ export async function POST(request: Request) {
   return new NextResponse(
     JSON.stringify({
       success: true,
+      trip,
+      totalPrice: formatCurrency(
+        differenceInDays(new Date(req.endDate), new Date(req.startDate)) *
+          Number(trip.pricePerDay)
+      ),
     })
   );
 }

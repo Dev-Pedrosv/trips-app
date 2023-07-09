@@ -5,6 +5,7 @@ import DatePicker from "@/components/DatePicker";
 import Input from "@/components/Input";
 import { formatCurrency } from "@/lib/format-currency";
 import { differenceInDays } from "date-fns";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 
@@ -37,6 +38,8 @@ function TripReservation({
     watch,
     setError,
   } = useForm<TripsReservationForm>();
+
+  const router = useRouter();
 
   const onSubmit = async (data: TripsReservationForm) => {
     const response = await fetch("http://localhost:3000/api/trips/check", {
@@ -78,6 +81,10 @@ function TripReservation({
       });
       return;
     }
+
+    router.push(
+      `/trips/${tripId}/confirmation?startDate=${startDate?.toISOString()}&endDate=${endDate?.toISOString()}&maxGuests=${maxGuests}`
+    );
   };
 
   const startDate = watch("startDate");
