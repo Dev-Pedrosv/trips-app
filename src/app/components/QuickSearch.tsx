@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 function QuickSearch() {
@@ -13,32 +14,48 @@ function QuickSearch() {
       </div>
 
       <div className="flex w-full justify-evenly mt-5">
-        <div className="flex flex-col items-center gap-1">
-          <Image
-            width={35}
-            height={35}
-            src="/hotel-icon.png"
-            alt="hotel icon"
-          />
-          <p className="text-sm text-grayPrimary">Hotel</p>
-        </div>
-        <div className="flex flex-col items-center gap-1">
-          <Image width={35} height={35} src="/farm-icon.png" alt="farm icon" />
-          <p className="text-sm text-grayPrimary">Fazenda</p>
-        </div>
-        <div className="flex flex-col items-center gap-1">
-          <Image
-            width={35}
-            height={35}
-            src="/cottage-icon.png"
-            alt="cottage icon"
-          />
-          <p className="text-sm text-grayPrimary">Chalé</p>
-        </div>
-        <div className="flex flex-col items-center gap-1">
-          <Image width={35} height={35} src="/inn-icon.png" alt="inn icon" />
-          <p className="text-sm text-grayPrimary">Pousada</p>
-        </div>
+        <Link href={"/trips/search?text=hotel"}>
+          <div className="flex flex-col items-center gap-1">
+            <Image
+              width={35}
+              height={35}
+              src="/hotel-icon.png"
+              alt="hotel icon"
+            />
+            <p className="text-sm text-grayPrimary">Hotel</p>
+          </div>
+        </Link>
+
+        <Link href={"/trips/search?text=fazenda"}>
+          <div className="flex flex-col items-center gap-1">
+            <Image
+              width={35}
+              height={35}
+              src="/farm-icon.png"
+              alt="farm icon"
+            />
+            <p className="text-sm text-grayPrimary">Fazenda</p>
+          </div>
+        </Link>
+
+        <Link href={"/trips/search?text=chalé"}>
+          <div className="flex flex-col items-center gap-1">
+            <Image
+              width={35}
+              height={35}
+              src="/cottage-icon.png"
+              alt="cottage icon"
+            />
+            <p className="text-sm text-grayPrimary">Chalé</p>
+          </div>
+        </Link>
+
+        <Link href={"/trips/search?text=pousada"}>
+          <div className="flex flex-col items-center gap-1">
+            <Image width={35} height={35} src="/inn-icon.png" alt="inn icon" />
+            <p className="text-sm text-grayPrimary">Pousada</p>
+          </div>
+        </Link>
       </div>
     </div>
   );

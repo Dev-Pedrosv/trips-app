@@ -12,9 +12,11 @@ function TripsSearch() {
   useEffect(() => {
     const fetchTrips = async () => {
       const response = await fetch(
-        `/api/trips/search?text=${searchParams.get("text")}&startDate=${
-          searchParams.get("startDate") ?? ""
-        }&budget=${searchParams.get("budget") ?? ""}`
+        `/api/trips/search?text=${searchParams.get(
+          "text"
+        )}&startDate=${searchParams.get("startDate")}&budget=${searchParams.get(
+          "budget"
+        )}`
       ).then((res) => res.json());
 
       setTrips(response);
