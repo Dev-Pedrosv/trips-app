@@ -10,18 +10,20 @@ import { ptBR } from "date-fns/locale";
 import ReactCountryFlag from "react-country-flag";
 
 import Button from "@/components/Button";
+import { toast } from "react-toastify";
+import { formatCurrency } from "@/lib/format-currency";
 
 function TripConfirmation({ params }: { params: { tripId: string } }) {
   const [trip, setTrip] = useState<Trip | null>();
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
-  const { status } = useSession();
+  const { status, data } = useSession();
   const router = useRouter();
 
   const searchParams = useSearchParams();
   const startDate = new Date(searchParams.get("startDate") as string);
   const endDate = new Date(searchParams.get("endDate") as string);
-  const maxGuests = searchParams.get("maxGuests");
+  const guests = searchParams.get("guests");
 
   useEffect(() => {
     const fetchTrip = async () => {
@@ -31,7 +33,7 @@ function TripConfirmation({ params }: { params: { tripId: string } }) {
           tripId: params.tripId,
           startDate: startDate,
           endDate: endDate,
-          maxGuests: maxGuests,
+          maxGuests: guests,
         }),
       }).then((res) => res.json());
 
@@ -52,6 +54,33 @@ function TripConfirmation({ params }: { params: { tripId: string } }) {
   }, [status]);
 
   if (!trip) return null;
+
+  const handleBuyClick = async () => {
+    const res = await fetch("http://localhost:3000/api/trips/reservation", {
+      method: "POST",
+      body: Buffer.from(
+        JSON.stringify({
+          userId: (data?.user as any).id,
+          tripId: params.tripId,
+          startDate,
+          endDate,
+          guests: Number(guests),
+          totalPaid: totalPrice,
+        })
+      ),
+    });
+
+    if (!res.ok) {
+      return toast.error("Ocorreu um erro ao realizar a reserva!", {
+        position: "bottom-center",
+      });
+    }
+    router.push("/");
+
+    toast.success("Reserva realizada com sucesso!", {
+      position: "bottom-center",
+    });
+  };
 
   return (
     <div className="container mx-auto p-5">
@@ -85,7 +114,7 @@ function TripConfirmation({ params }: { params: { tripId: string } }) {
         </h3>
         <div className="flex justify-between">
           <p className="text-primaryDarker">Total:</p>
-          <p className="font-medium">{totalPrice}</p>
+          <p className="font-medium">{formatCurrency(totalPrice)}</p>
         </div>
       </div>
 
@@ -98,9 +127,11 @@ function TripConfirmation({ params }: { params: { tripId: string } }) {
         </div>
 
         <h3 className="font-semibold text-primaryDarker mt-5">Hóspedes</h3>
-        <p>{maxGuests} hóspedes</p>
+        <p>{guests} hóspedes</p>
 
-        <Button className="mt-5">Finalizar Compra</Button>
+        <Button className="mt-5" onClick={handleBuyClick}>
+          Finalizar Compra
+        </Button>
       </div>
     </div>
   );

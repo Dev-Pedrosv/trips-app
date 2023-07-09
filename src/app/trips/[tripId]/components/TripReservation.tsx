@@ -4,6 +4,7 @@ import Button from "@/components/Button";
 import DatePicker from "@/components/DatePicker";
 import Input from "@/components/Input";
 import { formatCurrency } from "@/lib/format-currency";
+import { data } from "autoprefixer";
 import { differenceInDays } from "date-fns";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -83,7 +84,9 @@ function TripReservation({
     }
 
     router.push(
-      `/trips/${tripId}/confirmation?startDate=${startDate?.toISOString()}&endDate=${endDate?.toISOString()}&maxGuests=${maxGuests}`
+      `/trips/${tripId}/confirmation?startDate=${startDate?.toISOString()}&endDate=${endDate?.toISOString()}&guests=${
+        data.guests
+      }`
     );
   };
 
