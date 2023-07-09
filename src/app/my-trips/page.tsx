@@ -18,7 +18,7 @@ function MyTrips() {
 
   const fetchReservations = async () => {
     const response = await fetch(
-      `http://localhost:3000/api/user/${(data?.user as any).id}/reservations`
+      `http://localhost:3000/api/user/${(data?.user as any)?.id}/reservations`
     ).then((res) => res.json());
 
     setReservations(response);
@@ -26,7 +26,7 @@ function MyTrips() {
   };
 
   useEffect(() => {
-    if (status === "unauthenticated" || !data?.user) {
+    if (status === "unauthenticated") {
       return router.push("/");
     }
 
