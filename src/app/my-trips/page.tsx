@@ -50,12 +50,12 @@ function MyTrips() {
           ))}
         </div>
       ) : (
-        <div className="flex flex-col">
-          <p className="text-primaryDarker font-medium mt-2">
+        <div className="flex flex-col lg:max-w-[300px] lg:mx-auto">
+          <p className="text-primaryDarker font-medium mt-2 lg:text-center lg:mt-20">
             Você ainda nao tem nenhuma reserva :(
           </p>
           <Link href="/">
-            <Button className="w-full mt-2">Fazer reserva</Button>
+            <Button className="w-full mt-2 lg:mt-10">Fazer reserva</Button>
           </Link>
         </div>
       )}

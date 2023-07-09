@@ -22,7 +22,7 @@ async function TripsDetails({ params }: { params: { tripId: string } }) {
   if (!trip) return null;
 
   return (
-    <div className="container mx-auto lg:px-40">
+    <div className="container mx-auto lg:px-40 lg:p-10">
       <TripHeader trip={trip} />
       <div className="flex flex-col lg:flex-row lg:mt-12 lg:gap-20">
         <div className="lg:order-2">

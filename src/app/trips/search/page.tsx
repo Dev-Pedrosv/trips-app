@@ -26,7 +26,7 @@ function TripsSearch() {
   }, []);
 
   return (
-    <div className="container mx-auto flex flex-col p-5 items-start">
+    <div className="container mx-auto flex flex-col p-5 items-start lg:pt-10">
       <h1 className="text-primaryDarker font-semibold text-xl lg:text-[2.5rem] lg:w-full lg:text-left">
         Viagens encontradas
       </h1>
