@@ -2,6 +2,12 @@
 
 🗔 Check out the app: https://trips-app-dev.vercel.app/
 
+![image](https://github.com/Dev-Pedrosv/trips-app/assets/82785683/38bf7283-6608-4bac-9437-f3f689eb52e6)
+![image](https://github.com/Dev-Pedrosv/trips-app/assets/82785683/d03e50c4-f8a0-4feb-a09e-583897ce4a72)
+![image](https://github.com/Dev-Pedrosv/trips-app/assets/82785683/2c6f1e93-f4ec-4801-ba32-4e2640e95f8e)
+![image](https://github.com/Dev-Pedrosv/trips-app/assets/82785683/35f04a56-2661-4522-8154-88748fc9ec49)
+![image](https://github.com/Dev-Pedrosv/trips-app/assets/82785683/95856bb3-937e-4027-b202-e089d2be2a11)
+
 ## 🎲 What is Trips App?
 
 This project is an application designed to facilitate trip reservations. Users can log in using social login via Google, browse a list of available trips, view trip details, simulate a purchase of a trip, and see their reservations.
