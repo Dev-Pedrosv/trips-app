@@ -30,9 +30,6 @@ The site has a total of 6 page(s), which are:
 - **/checkout/stripe:** A page with payment process.
 - **/my-trips:** A page with all reservations trips.
 
-
-🗔 Check out the app: https://kayke-fujinaka.github.io/Ignite-Lab/?path=/story/components-signin--default
-
 ## 👨‍🎨 Figma
 
 🗔 Check out the design: https://www.figma.com/file/vJ00mLP5HcoBD9IXGuS8OH/FSW-Project-%5BLive%5D-(Copy)?type=design&node-id=194%3A1733&mode=design&t=HmS88HpEUudIOuMT-1
@@ -83,7 +80,7 @@ Thanks to the following people who contributed to this project:
       <a href="#">
         <img src="https://avatars.githubusercontent.com/u/82785683?v=4" width="160px;" alt="Photo by Pedro Silva on GitHub"/><br>
         <sub>
-          <b>Kayke Fujinaka</b>
+          <b>Pedro Silva</b>
         </sub>
       </a>
     </all>
